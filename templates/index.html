@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Generator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2>Password Generator 🔐</h2>
+
+        <label>Password Length:</label>
+        <input type="number" id="length" value="12" min="6" max="32">
+
+        <div class="options">
+            <input type="checkbox" id="digits" checked>
+            <label for="digits">Include Digits (0-9)</label>
+
+            <input type="checkbox" id="special" checked>
+            <label for="specialChars">Include Special Characters (!@#$%^&)</label>
+        </div>
+
+        <div class="options">
+            <input type="checkbox" id="minDigits">
+            <label for="minDigits">Must include minimum 2 digits</label>
+
+            <input type="checkbox" id="minSpecials">
+            <label for="minSpecials">Must include minimum 2 special characters</label>
+        </div>
+
+        <button onclick="generatePassword()">Generate Password</button>
+
+        <div id="output">
+            <h3>Your Password:</h3>
+            <p id="password"></p>
+        </div>
+
+        <button id="copyBtn" onclick="copyToClipboard()">Copy</button>
+
+        <div class="strength-container">
+            <div id="strengthBar"></div>
+            <p id="strengthText">Strength</p>
+        </div>
+
+        <label>Check Your Own Password:</label>
+        <input type="text" id="customPassword" placeholder="Enter your password">
+        <button onclick="checkCustomPassword()">Check Strength</button>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
